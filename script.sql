@@ -22,3 +22,16 @@ CREATE TABLE contacts (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE telephones (
+  id INT NOT NULL AUTO_INCREMENT,
+  numero VARCHAR(20) NOT NULL,
+  contact_id INT NOT NULL,
+  PRIMARY KEY (id),
+  INDEX fk_telephones_contacts1_idx (contact_id ASC),
+  CONSTRAINT fk_telephones_contacts1
+    FOREIGN KEY (contact_id)
+    REFERENCES contacts (id)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB DEFAULT CHARSET=utf8;
